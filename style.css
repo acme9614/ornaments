@@ -1,0 +1,49 @@
+/* Active dot color */
+.mainSlider .swiper-pagination-bullet-active {
+  background-color: #aa7248 !important; /* Example: Gold */
+}
+
+/* Optional: inactive dots */
+.mainSlider .swiper-pagination-bullet {
+  background-color: #e5e7eb; /* Example: Tailwind gray-200 */
+  opacity: 1;
+}
+
+/* Apply fonts to specific elements */
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+}
+
+
+
+/* services  */
+.folded-rectangle {
+  background: #aa7248;
+  --r: 25px;
+  border-radius: var(--r) 0 / calc(2 * var(--r)) 0;
+  padding-block: var(--r);
+  --_m: #0000 100%, #000 calc(100% + 1px);
+  mask: conic-gradient(#000 0 0) content-box,
+    radial-gradient(var(--r) at 100% 100%, var(--_m)) 0 100% no-repeat,
+    radial-gradient(var(--r) at 0 0, var(--_m)) 100% 0 no-repeat;
+  mask-size: var(--r) var(--r);
+}
+
+
+
+/* poster image on deskstop  */
+
+@media (min-width: 1024px) {
+  section[style] {
+    background-image: url("assets/Screen-Shot-2024-02-14-at-4.22.29-PM-e1707946252804.png") !important;
+  }
+}

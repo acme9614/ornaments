@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Jewellery Design</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+
+    <!-- SwiperJS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="font-montserrat">
+    <!-- header  -->
+    <div class="relative">
+      <!-- Drawer -->
+      <div
+        id="drawer"
+        class="fixed top-0 left-0 h-full w-1/2 bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300"
+      >
+        <div class="flex items-center justify-between p-4 border-b">
+          <h2 class="text-lg font-bold font-playfair">Menu</h2>
+          <button onclick="closeDrawer()" class="text-xl">✖</button>
+        </div>
+        <ul class="p-4 space-y-3">
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToScheme()"
+              >Scheme</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToBankDetails()"
+              >Bank</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToKyc()"
+              >KYC</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToRate()"
+              >Rate</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateSchemeRecords()"
+              >Records</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToCustomerCard()"
+              >Card</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateTransactionHistory()"
+              >History</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToMyOrder()"
+              >Order</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToUserProfile()"
+              >Profile</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToDigitalGold()"
+              >Gold</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToPanchang()"
+              >Panchang</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-[#2C2C2C] font-medium hover:text-[#8B5E3C]"
+              onclick="navigateToSetting()"
+              >Settings</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Overlay -->
+      <div
+        id="overlay"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"
+        onclick="closeDrawer()"
+      ></div>
+
+      <!-- Header -->
+      <div class="bg-black w-full relative">
+        <div class="max-w-screen-xl mx-auto px-4 relative">
+          <div class="h-20 flex items-center justify-start relative">
+            <!-- Left: Menu Icon -->
+            <div class="z-50">
+              <button
+                id="menuButton"
+                onclick="openDrawer()"
+                class="text-3xl text-white focus:outline-none"
+              >
+                ☰
+              </button>
+            </div>
+
+            <!-- Center: Logo -->
+            <div
+              class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            >
+              <a href="#" class="flex items-center space-x-2">
+                <img
+                  src="https://cdn.prod.website-files.com/66f7a90ca8e71dea4c01a200/66f7b099922ec61cd50e287d_Nav%20Logo.svg"
+                  alt="ornaments"
+                  class="h-14 w-auto object-contain"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- branding slider  -->
+    <div
+      class="swiper mySwiper w-full h-[500px] lg:h-[600px] bg-black text-white"
+    >
+      <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div
+          class="swiper-slide relative flex justify-center lg:justify-start items-center px-4 overflow-hidden min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] bg-black"
+        >
+          <!-- Desktop Image -->
+          <img
+            src="assets/slider3.png"
+            alt="Desktop Banner"
+            class="hidden md:block absolute top-0 left-0 w-full h-full object-cover z-0"
+          />
+          <!-- Mobile Image -->
+          <img
+            src="assets/slider3_mobile.png"
+            alt="Mobile Banner"
+            class="block md:hidden absolute top-0 left-0 w-full h-full object-fill z-0"
+          />
+
+          <!-- Dark Overlay -->
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-30 z-10"
+          ></div>
+
+          <!-- Foreground Content -->
+          <div class="relative z-20 text-white text-left lg:ml-10 max-w-xl">
+            <div class="mb-2 flex items-center gap-4">
+              <div class="w-10 h-px bg-white"></div>
+              <p class="text-sm tracking-wide font-montserrat">
+                Special Offer Just for You
+              </p>
+              <div class="w-10 h-px bg-white"></div>
+            </div>
+            <div
+              class="text-3xl sm:text-5xl font-bold leading-tight space-y-2 mt-4 font-playfair"
+            >
+              <h1>Shine Bright</h1>
+              <h1>This Festive Season</h1>
+            </div>
+            <div class="mt-8">
+              <a
+                href="#"
+                class="inline-block px-6 py-3 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 font-montserrat"
+              >
+                Explore Collection
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div
+          class="swiper-slide relative flex justify-center lg:justify-end items-center px-4 overflow-hidden min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] bg-black"
+        >
+          <!-- Desktop Image -->
+          <img
+            src="assets/slider4.png"
+            alt="Desktop Banner"
+            class="hidden md:block absolute top-0 left-0 w-full h-full object-cover z-0"
+          />
+          <!-- Mobile Image -->
+          <img
+            src="assets/slider4_mobile.png"
+            alt="Mobile Banner"
+            class="block md:hidden absolute top-0 left-0 w-full h-full object-fill z-0"
+          />
+
+          <!-- Dark Overlay -->
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-30 z-10"
+          ></div>
+
+          <!-- Foreground Content -->
+          <div
+            class="relative z-20 text-white text-left lg:ml-10 max-w-xl lg:mr-10"
+          >
+            <div class="mb-2 flex items-center gap-4">
+              <div class="w-10 h-px bg-white"></div>
+              <p class="text-sm tracking-wide font-montserrat">
+                Special Offer Just for You
+              </p>
+              <div class="w-10 h-px bg-white"></div>
+            </div>
+            <div
+              class="text-3xl sm:text-5xl font-bold leading-tight space-y-2 mt-4 font-playfair"
+            >
+              <h1>Shine Bright</h1>
+              <h1>This Festive Season</h1>
+            </div>
+            <div class="mt-8">
+              <a
+                href="#"
+                class="inline-block px-6 py-3 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 font-montserrat"
+              >
+                Explore Collection
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div
+          class="swiper-slide relative flex justify-center lg:justify-start items-center px-4 overflow-hidden min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] bg-black"
+        >
+          <!-- Desktop Image -->
+          <img
+            src="assets/slider1.png"
+            alt="Desktop Banner"
+            class="hidden md:block absolute top-0 left-0 w-full h-full object-fill z-0"
+          />
+          <!-- Mobile Image -->
+          <img
+            src="assets/slider1_mobile.png"
+            alt="Mobile Banner"
+            class="block md:hidden absolute top-0 left-0 w-full h-full object-fill z-0"
+          />
+
+          <!-- Dark Overlay -->
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-30 z-10"
+          ></div>
+
+          <!-- Foreground Content -->
+          <div class="relative z-20 text-white text-left lg:ml-10 max-w-xl">
+            <div class="mb-2 flex items-center gap-4">
+              <div class="w-10 h-px bg-white"></div>
+              <p class="text-sm tracking-wide font-montserrat">
+                Special Offer Just for You
+              </p>
+              <div class="w-10 h-px bg-white"></div>
+            </div>
+            <div
+              class="text-3xl sm:text-5xl font-bold leading-tight space-y-2 mt-4 font-playfair"
+            >
+              <h1>Shine Bright</h1>
+              <h1>This Festive Season</h1>
+            </div>
+            <div class="mt-8">
+              <a
+                href="#"
+                class="inline-block px-6 py-3 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 font-montserrat"
+              >
+                Explore Collection
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation (optional) -->
+      <div class="swiper-pagination mainSlider"></div>
+      <!-- <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div> -->
+    </div>
+
+    <!-- about section  -->
+
+    <section class="px-4 py-8 md:py-20 lg:px-20">
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+        <!-- Left Image with Overlay -->
+        <div
+          class="relative order-2 lg:order-1"
+          data-aos="fade-right"
+          data-aos-duration="1000"
+        >
+          <img
+            src="https://cdn.prod.website-files.com/66f7a90ca8e71dea4c01a200/67017d966d56cfa45363fd6b_About%20.jpg"
+            alt="About Ornaments"
+            class="w-full rounded-lg shadow-lg object-cover"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-black bg-opacity-30 rounded-lg"></div>
+        </div>
+
+        <!-- Right Content -->
+        <div
+          class="space-y-6 order-1 lg:order-2"
+          data-aos="fade-left"
+          data-aos-duration="1000"
+        >
+          <!-- Heading -->
+          <div class="flex items-center space-x-4">
+            <div class="w-10 h-px bg-gray-900"></div>
+            <p
+              class="text-sm md:text-xl font-medium uppercase tracking-widest font-montserrat"
+            >
+              About Our Ornaments
+            </p>
+            <div class="w-10 h-px bg-gray-900"></div>
+          </div>
+
+          <!-- Title -->
+          <h2 class="text-3xl md:text-4xl font-bold leading-snug font-playfair">
+            Crafting unique jewelry with passion and precision.
+          </h2>
+
+          <!-- Description -->
+          <div class="space-y-4 text-base text-gray-700 font-montserrat">
+            <p>
+              At Ornaments, we believe that jewelry is more than just an
+              accessory—it's a reflection of who you are, a symbol of special
+              moments, and a way to express your unique style.
+            </p>
+            <p>
+              Each piece in our collection is meticulously designed and
+              handcrafted using only the finest materials. From ethically
+              sourced gemstones to high-quality metals, we are committed to
+              sustainability and excellence.
+            </p>
+          </div>
+
+          <!-- Button + SVG in a row on mobile -->
+          <div
+            class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <!-- Learn More Button -->
+            <a
+              href="#"
+              class="inline-block relative group px-6 py-3 bg-black text-white font-medium rounded-full overflow-hidden transition-all duration-300 font-montserrat"
+            >
+              <span
+                class="relative z-10 group-hover:-translate-y-full transition-transform duration-300"
+              >
+                Learn more
+              </span>
+              <span
+                class="absolute inset-0 bg-gray-800 z-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+              ></span>
+            </a>
+
+            <!-- Decorative SVG -->
+            <div>
+              <img
+                src="https://cdn.prod.website-files.com/66f7a90ca8e71dea4c01a200/66f7b099558ecdd43907c525_Ornaments.svg"
+                alt="Ornaments Logo"
+                class="w-32 md:w-52"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- services  -->
+
+    <div class="flex flex-col items-center justify-center py-2">
+      <!-- Grid Container -->
+      <div
+        id="boxContainer"
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 overflow-hidden transition-all duration-500 max-h-[10rem] sm:max-h-none"
+      >
+        <!-- Box 1 -->
+        <div
+          onclick="navigateToScheme()"
+          class="w-32 h-32 text-white folded-rectangle flex flex-col items-center justify-center text-center shadow-md cursor-pointer"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
+          <img
+            class="invert w-8 h-8"
+            src="https://cdn-icons-png.flaticon.com/128/10150/10150740.png"
+          />
+          <span class="text-sm font-semibold mt-2 font-montserrat">Scheme</span>
+        </div>
+
+        <!-- Box 2 -->
+        <div
+          onclick="navigateToBankDetails()"
+          class="w-32 h-32 text-white folded-rectangle flex flex-col items-center justify-center text-center shadow-md cursor-pointer"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <img
+            class="invert w-8 h-8"
+            src="https://cdn-icons-png.flaticon.com/128/2830/2830155.png"
+          />
+          <span class="text-sm font-semibold mt-2 font-montserrat">Bank</span>
+        </div>
+
+        <!-- Box 3 to 10 -->
+        <div
+          onclick="navigateToKyc()"
+          class="w-32 h-32 text-white folded-rectangle flex flex-col items-center justify-center text-center shadow-md cursor-pointer"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        >
+          <img
+            class="invert w-10 h-10"
+            src="https://cdn-icons-png.flaticon.com/128/10457/10457799.png"
+          />
+          <span class="text-sm font-semibold mt-2 font-montserrat">KYC</span>
+        </div>
+
+        <div
+          onclick="navigateToRate()"
+          class="w-32 h-32 text-white folded-rectangle flex flex-col items-center justify-center text-center shadow-md cursor-pointer"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          <img
+            class="invert w-8 h-8"
+            src="https://cdn-icons-png.flaticon.com/128/592/592015.png"
+          />
+          <span class="text-sm font-semibold mt-2 font-montserrat">Rate</span>
+        </div>
+
+        <div
+          onclick="navigateSchemeRecords()"
+          class="w-32 h-32 text-white folded-rectangle flex flex-col items-center justify-center text-center shadow-md cursor-pointer"
+          data-aos="zoom-in"
+          data-aos-delay="500"
+        >
+          <img
+            class="invert w-8 h-8"
+            src="https://cdn-icons-png.flaticon.com/128/2910/2910768.png"
+          />
+          <span class="text-sm font-semibold mt-2 font-montserrat"
+            >Records</span
+          >
+        </div>
+
+        <div
+          onclick="navigateToCustomerCard()"
+          class="w-32 h-32 text-white folded-rectangle flex flex-col items-center justify-center text-center shadow-md cursor-pointer"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
+          <img
+            class="invert w-8 h-8"
+            src="https://cdn-icons-png.flaticon.com/128/3596/3596091.png"
+          />
+          <span class="text-sm font-semibold mt-2 font-montserrat">Card</span>
+        </div>
+
+        <div
+          onclick="navigateTransactionHistory()"
+          class="w-32 h-32 text-white folded-rectangle flex flex-col items-center justify-center text-center shadow-md cursor-pointer"
+          data-aos="zoom-in"
+          data-aos-delay="700"
+        >
+          <img
+            class="invert w-8 h-8"
+            src="https://cdn-icons-png.flaticon.com/128/2277/2277956.png"
+          />
+          <span class="text-sm font-semibold mt-2 font-montserrat"
+            >History</span
+          >
+        </div>
+
+        <div
+          onclick="navigateToMyOrder()"
+          class="w-32 h-32 text-white folded-rectangle flex flex-col items-center justify-center text-center shadow-md cursor-pointer"
+          data-aos="fade-up"
+          data-aos-delay="800"
+        >
+          <img
+            class="invert w-10 h-10"
+            src="https://cdn-icons-png.flaticon.com/128/10597/10597732.png"
+          />
+          <span class="text-sm font-semibold mt-2 font-montserrat">Order</span>
+        </div>
+
+        <div
+          onclick="navigateToUserProfile()"
+          class="w-32 h-32 text-white folded-rectangle flex flex-col items-center justify-center text-center shadow-md cursor-pointer"
+          data-aos="zoom-in"
+          data-aos-delay="900"
+        >
+          <img
+            class="invert w-8 h-8"
+            src="https://cdn-icons-png.flaticon.com/128/1144/1144760.png"
+          />
+          <span class="text-sm font-semibold mt-2 font-montserrat"
+            >Profile</span
+          >
+        </div>
+
+        <div
+          onclick="navigateToSetting()"
+          class="w-32 h-32 text-white folded-rectangle flex flex-col items-center justify-center text-center shadow-md cursor-pointer"
+          data-aos="fade-up"
+          data-aos-delay="1000"
+        >
+          <img
+            class="invert w-8 h-8"
+            src="https://cdn-icons-png.flaticon.com/128/2782/2782949.png"
+          />
+          <span class="text-sm font-semibold mt-2 font-montserrat"
+            >Setting</span
+          >
+        </div>
+      </div>
+
+      <!-- Toggle Button for Mobile -->
+      <div class="sm:hidden mt-0">
+        <button onclick="toggleBoxes()" class="animate-bounce text-gray-600">
+          <svg
+            id="arrowIcon"
+            class="w-8 h-8 mx-auto transition-transform duration-300"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Branding Section -->
+    <section class="py-12 px-6 text-center font-montserrat bg-white">
+      <!-- Heading -->
+      <div class="flex justify-center items-center space-x-4">
+        <div class="w-10 h-px bg-gray-900"></div>
+        <p
+          class="text-sm md:text-xl font-medium uppercase tracking-widest font-montserrat mb-2"
+        >
+          Trusted by Many, Adored by All
+        </p>
+        <div class="w-10 h-px bg-gray-900"></div>
+      </div>
+      <div
+        class="max-w-3xl mx-auto"
+        data-aos="fade-up"
+        data-aos-delay="100"
+        data-aos-duration="1000"
+      >
+        <h2
+          class="text-3xl md:text-5xl font-semibold tracking-wide text-gray-800 mb-4 font-playfair"
+        >
+          Our legacy at
+          <span class="text-[#AA7248] font-bold">Ornaments</span> is built on
+          trust
+        </h2>
+        <p class="text-gray-600 text-base md:text-lg leading-relaxed mt-4">
+          For generations, Ornaments has been synonymous with elegance,
+          authenticity, and timeless craftsmanship. We're more than just
+          jewellery — we are a heritage of purity and passion.
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="py-16 px-4 m-4 lg:m-8 bg-cover bg-center bg-no-repeat"
+      style="
+        background-image: url('https://img.freepik.com/premium-photo/gold-necklace-with-flowers-leaves-is-displayed-black-background_579873-654.jpg');
+      "
+    >
+      <div class="py-10 px-4" style="background-image: none">
+        <div
+          class="max-w-6xl text-start text-white space-y-6"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
+          <h2 class="text-3xl md:text-4xl font-bold font-playfair">
+            Find Your Perfect Piece Now
+          </h2>
+          <div class="max-w-md">
+            <p class="text-base md:text-lg font-montserrat">
+              Dignissim in diam et lacus diam. Pellentesque ornare augue tellus
+              id nulla ac. Nisi in ipsum sodales at felis. Augue faucibus massa
+              arcu a.
+            </p>
+          </div>
+
+          <a
+            href="#"
+            class="relative inline-block group overflow-hidden rounded-full border border-white px-6 py-3 text-white font-medium transition-all duration-300 hover:bg-white hover:text-black font-montserrat"
+          >
+            <span
+              class="relative z-10 transition-transform duration-300 group-hover:-translate-y-full"
+            >
+              Shop new collection
+            </span>
+            <span
+              class="absolute inset-0 flex items-center justify-center text-white transition-transform duration-300 -translate-y-full group-hover:translate-y-0"
+            >
+              Shop new collection
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-black text-white py-12 px-4 font-montserrat">
+      <div>
+        <div class="max-w-5xl mx-auto w-full">
+          <!-- Footer Grid -->
+          <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+            <!-- Logo & Address -->
+            <div class="space-y-4">
+              <a href="#" class="block">
+                <img
+                  src="https://cdn.prod.website-files.com/66f7a90ca8e71dea4c01a200/66f7b099922ec61cd50e287d_Nav%20Logo.svg"
+                  alt="Nav Logo"
+                  class="h-10 w-auto object-contain"
+                />
+              </a>
+              <p class="text-sm text-gray-400">
+                Sit est nunc proin tellus posuere egestas vitae morbi.
+              </p>
+              <div>
+                <div class="text-sm text-gray-300 font-semibold">Address :</div>
+                <div class="text-xs text-gray-400">
+                  Macomb, Chicago HQ Estica Cop.
+                </div>
+              </div>
+              <div>
+                <div class="text-sm text-white font-semibold">Contact :</div>
+                <div class="space-y-1">
+                  <a
+                    href="#"
+                    class="text-xs text-gray-400 block hover:underline"
+                    >+9 (245) 326-02-22</a
+                  >
+                  <a
+                    href="mailto:hello@example.com"
+                    class="text-xs text-gray-400 block hover:underline"
+                    >hello@example.com</a
+                  >
+                </div>
+              </div>
+              <!-- Social Icons -->
+              <div class="flex space-x-4 pt-2">
+                <a href="#" target="_blank">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png"
+                    alt="Facebook"
+                    class="w-5"
+                  />
+                </a>
+                <a href="#" target="_blank">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+                    alt="WhatsApp"
+                    class="w-5"
+                  />
+                </a>
+                <a href="#" target="_blank">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/128/14417/14417460.png"
+                    alt="Twitter"
+                    class="w-5 invert"
+                  />
+                </a>
+                <a href="#" target="_blank">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/128/174/174855.png"
+                    alt="Instagram"
+                    class="w-5"
+                  />
+                </a>
+              </div>
+            </div>
+
+            <!-- Main Page -->
+            <div>
+              <h6 class="text-white font-semibold mb-3 font-playfair">
+                Main page
+              </h6>
+              <ul class="space-y-2 text-sm text-gray-400">
+                <li><a href="#" class="hover:underline">Home</a></li>
+                <li><a href="#" class="hover:underline">About</a></li>
+                <li><a href="#" class="hover:underline">Contact</a></li>
+                <li><a href="#" class="hover:underline">Blog</a></li>
+              </ul>
+            </div>
+
+            <!-- Inner Page -->
+            <div>
+              <h6 class="text-white font-semibold mb-3 font-playfair">
+                Inner page
+              </h6>
+              <ul class="space-y-2 text-sm text-gray-400">
+                <li>
+                  <a href="#" class="hover:underline">Blog details</a>
+                </li>
+                <li><a href="#" class="hover:underline">Shop</a></li>
+                <li>
+                  <a href="#" class="hover:underline">Shop Details</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline">Terms and Conditions</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline">Privacy Policy</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Utility Page -->
+            <div>
+              <h6 class="text-white font-semibold mb-3 font-playfair">
+                Utility page
+              </h6>
+              <ul class="space-y-2 text-sm text-gray-400">
+                <li>
+                  <a href="#" class="hover:underline">Style guide</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline">Licenses</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline">404 not found</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline">Password protected</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline">Change log</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
